@@ -556,9 +556,7 @@ func parseStructuredData(buff []byte, cursor *int, l int) (string, error) {
 			break
 		}
 
-		b := buff[to]
-
-		if b == ']' {
+		if buff[to] == ']' && buff[to-1] != '\\' {
 			switch t := to + 1; {
 			case t == l:
 				found = true
